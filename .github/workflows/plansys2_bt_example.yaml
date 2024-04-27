@@ -32,6 +32,6 @@ jobs:
         with:
           package-name: plansys2_bt_example
           target-ros2-distro: rolling
-          vcs-repo-file-url: ${GITHUB_WORKSPACE}/dependency_repos.repos
+          vcs-repo-file-url: ${GITHUB_WORKSPACE}/plansys2.repos
           colcon-mixin-name: coverage-gcc
           colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml

@@ -20,18 +20,18 @@ jobs:
     steps:
       - name: Install popf deps
         run: sudo apt-get install libfl-dev
+      - uses: actions/checkout@v2
       - name: Setup ROS 2
-        uses: ros-tooling/setup-ros@0.6.3
+        uses: ros-tooling/setup-ros@0.7.1
         with:
           required-ros-distributions: rolling
-      - name: Create custom repos
-        run: wget -O /tmp/all.repos https://raw.githubusercontent.com/PlanSys2/ros2_planning_system_examples/rolling/plansys2.repos
+      - name: Install BT.CPP v4 and test_msgs (provisional Fix)
+        run: sudo apt-get install ros-rolling-behaviortree-cpp ros-rolling-test-msgs
       - name: build and test
-        uses: ros-tooling/action-ros-ci@0.3.5
+        uses: ros-tooling/action-ros-ci@0.3.6
         with:
           package-name: plansys2_patrol_navigation_example
           target-ros2-distro: rolling
-          vcs-repo-file-url: /tmp/all.repos
+          vcs-repo-file-url: ${GITHUB_WORKSPACE}/plansys2.repos
           colcon-mixin-name: coverage-gcc
           colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
-
