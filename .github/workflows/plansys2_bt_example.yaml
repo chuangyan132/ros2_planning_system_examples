@@ -27,6 +27,8 @@ jobs:
           required-ros-distributions: rolling
       - name: Install BT.CPP v4 and test_msgs (provisional Fix)
         run: sudo apt-get install ros-rolling-behaviortree-cpp ros-rolling-test-msgs
+      - name: Rosdep update
+        run: sudo rosdep update
       - name: build and test
         uses: ros-tooling/action-ros-ci@0.3.6
         with:
