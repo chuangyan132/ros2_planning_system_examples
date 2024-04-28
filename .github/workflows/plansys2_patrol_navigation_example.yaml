@@ -22,13 +22,15 @@ jobs:
         run: sudo apt-get install libfl-dev
       - uses: actions/checkout@v2
       - name: Setup ROS 2
-        uses: ros-tooling/setup-ros@0.7.1
+        uses: ros-tooling/setup-ros@0.7.3
         with:
           required-ros-distributions: rolling
       - name: Install BT.CPP v4 and test_msgs (provisional Fix)
-        run: sudo apt-get install ros-rolling-behaviortree-cpp ros-rolling-test-msgs
+        run: sudo apt-get install ros-rolling-behaviortree-cpp ros-rolling-test-msgs ros-rolling-geographic-msgs
+      - name: Rosdep update
+        run: rosdep update
       - name: build and test
-        uses: ros-tooling/action-ros-ci@0.3.6
+        uses: ros-tooling/action-ros-ci@0.3.7
         with:
           package-name: plansys2_patrol_navigation_example
           target-ros2-distro: rolling
