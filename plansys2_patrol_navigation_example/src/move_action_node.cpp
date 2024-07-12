@@ -40,29 +40,33 @@ public:
     geometry_msgs::msg::PoseStamped wp;
     wp.header.frame_id = "map";
     wp.header.stamp = now();
-    wp.pose.position.x = 0.0;
-    wp.pose.position.y = -2.0;
-    wp.pose.position.z = 0.0;
+    wp.pose.position.x = -7.58;
+    wp.pose.position.y = -8.67;
+    wp.pose.position.z = 0.00136;
     wp.pose.orientation.x = 0.0;
     wp.pose.orientation.y = 0.0;
     wp.pose.orientation.z = 0.0;
     wp.pose.orientation.w = 1.0;
     waypoints_["wp1"] = wp;
 
-    wp.pose.position.x = 1.8;
-    wp.pose.position.y = 0.0;
+    wp.pose.position.x = 6.03;
+    wp.pose.position.y = -7.52;
+    wp.pose.position.z = 0.00303;
     waypoints_["wp2"] = wp;
 
-    wp.pose.position.x = 0.0;
-    wp.pose.position.y = 2.0;
+    wp.pose.position.x = 6.78;
+    wp.pose.position.y = 14.8;
+    wp.pose.position.z = 0.00347;
     waypoints_["wp3"] = wp;
 
-    wp.pose.position.x = -0.5;
-    wp.pose.position.y = -0.5;
+    wp.pose.position.x = -8.08;
+    wp.pose.position.y = -15.8;
+    wp.pose.position.z = 0.00647;
     waypoints_["wp4"] = wp;
 
-    wp.pose.position.x = -2.0;
-    wp.pose.position.y = -0.4;
+    wp.pose.position.x = -6.0;
+    wp.pose.position.y = -1.0;
+    wp.pose.position.z = 0.0;
     waypoints_["wp_control"] = wp;
 
     using namespace std::placeholders;

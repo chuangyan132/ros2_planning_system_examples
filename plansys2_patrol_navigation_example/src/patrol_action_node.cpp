@@ -36,6 +36,8 @@ public:
   on_activate(const rclcpp_lifecycle::State & previous_state)
   {
     progress_ = 0.0;
+    RCLCPP_INFO(get_logger(), "patrol_action_node ready");
+    RCLCPP_INFO(get_logger(), "patrol_action_node : on_activate: ready");
 
     cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10);
     cmd_vel_pub_->on_activate();
@@ -47,7 +49,7 @@ public:
   on_deactivate(const rclcpp_lifecycle::State & previous_state)
   {
     cmd_vel_pub_->on_deactivate();
-
+    RCLCPP_INFO(get_logger(), "patrol_action_node : on_deactivate:ready");
     return ActionExecutorClient::on_deactivate(previous_state);
   }
 
@@ -56,7 +58,7 @@ private:
   {
     if (progress_ < 1.0) {
       progress_ += 0.1;
-
+      RCLCPP_INFO(get_logger(), "Progress: %.1f%%", progress_ * 100);
       send_feedback(progress_, "Patrol running");
 
       geometry_msgs::msg::Twist cmd;
@@ -76,7 +78,8 @@ private:
       cmd.angular.x = 0.0;
       cmd.angular.y = 0.0;
       cmd.angular.z = 0.0;
-
+      RCLCPP_INFO(get_logger(), "Progress: %.1f%%", progress_ * 100);
+      RCLCPP_INFO(get_logger(), "patrlo is finish");
       cmd_vel_pub_->publish(cmd);
 
       finish(true, 1.0, "Patrol completed");
